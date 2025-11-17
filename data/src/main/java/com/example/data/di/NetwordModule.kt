@@ -8,6 +8,7 @@ import jakarta.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.data.datasource.api.PatientService
+import dagger.Binds
 
 
 @Module
@@ -25,11 +26,12 @@ object NetworkModule  {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-//Use @Bind
+
     @Singleton
-    @Provides
+    @Binds
     fun providePatientService(retrofit: Retrofit): PatientService {
         return retrofit.create(PatientService::class.java)
     }
 }
+
 
